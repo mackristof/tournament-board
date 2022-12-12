@@ -132,7 +132,7 @@ class ApplicationTest {
             configureSecurity()
             configureTestDb()
         }
-        basicClient.post("/player/", ) {
+        basicClient.put("/player/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(PlayerDto(id = 1, name = "Christophe")))
@@ -145,7 +145,7 @@ class ApplicationTest {
             assertEquals(1, jacksonObjectMapper().readValue(bodyAsText(), Array<PlayerDto>::class.java).filter { it.id == 1}.size)
 
         }
-        basicClient.post("/player/", ) {
+        basicClient.put("/player/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(PlayerDto(id = 1, name = "Christophe modified")))
@@ -183,7 +183,7 @@ class ApplicationTest {
             configureSecurity()
              configureTestDb()
         }
-        basicClient.post("/tournament/", ) {
+        basicClient.put("/tournament/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(TournamentDto(id = 1, name = "casino royal")))
@@ -196,7 +196,7 @@ class ApplicationTest {
             assertEquals(1, jacksonObjectMapper().readValue(bodyAsText(), Array<TournamentDto>::class.java).filter { it.id == 1}.size)
 
         }
-        basicClient.post("/tournament/", ) {
+        basicClient.put("/tournament/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(TournamentDto(id = 1, name = "Blackjack")))
@@ -234,7 +234,7 @@ class ApplicationTest {
             configureSecurity()
             configureTestDb()
         }
-        basicClient.post("/tournament/", ) {
+        basicClient.put("/tournament/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(TournamentDto(id = 1, name = "casino royal")))
@@ -242,7 +242,7 @@ class ApplicationTest {
             assertEquals(HttpStatusCode.OK, status)
             assertEquals(TournamentDto(1, "casino royal"), jacksonObjectMapper().readValue(bodyAsText(), TournamentDto::class.java))
         }
-        basicClient.post("/player/", ) {
+        basicClient.put("/player/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(PlayerDto(id = 1, name = "Christophe")))
@@ -292,7 +292,7 @@ class ApplicationTest {
             configureSecurity()
              configureTestDb()
         }
-        basicClient.post("/tournament/", ) {
+        basicClient.put("/tournament/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(TournamentDto(id = 2, name = "casino")))
@@ -360,7 +360,7 @@ class ApplicationTest {
             configureSecurity()
              configureTestDb()
         }
-        basicClient.post("/tournament/", ) {
+        basicClient.put("/tournament/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(TournamentDto(id = 3, name = "casino")))
@@ -368,7 +368,7 @@ class ApplicationTest {
             assertEquals(HttpStatusCode.OK, status)
             assertEquals(TournamentDto(3, "casino"), jacksonObjectMapper().readValue(bodyAsText(), TournamentDto::class.java))
         }
-        basicClient.post("/player/", ) {
+        basicClient.put("/player/", ) {
             contentType(ContentType.Application.Json)
             accept(ContentType.Application.Json)
             setBody(jacksonObjectMapper().writeValueAsString(PlayerDto(id = 2, name = "John Doe")))

@@ -25,14 +25,14 @@ fun Application.configureRouting() {
             get("/player") {
                 call.respond(playerService.list().getOrHandle { it })
             }
-            post("/player/") {
+            put("/player/") {
                 val player = call.receive<Player>()
                 call.respond(playerService.add(player).getOrHandle { it })
             }
             get("/tournament") {
                 call.respond(tournamentService.list().getOrHandle { it })
             }
-            post("/tournament/") {
+            put("/tournament/") {
                 val tournament = call.receive<Tournament>()
                 call.respond(tournamentService.add(tournament).getOrHandle { it })
             }
