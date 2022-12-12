@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+
+
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+    ports:
+      - 5432:5432
+
+
+  server:
+    image: openjdk:17.0.2-jdk-slim-bullseye
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; java -XX:+UseContainerSupport -jar /app/tournament.jar'
+    environment:
+      - toto_DATASOURCE_URL=jdbc:postgresql://db:5432/test
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+    volumes:
+      - ./build/libs/:/app
